@@ -104,7 +104,7 @@ namespace WebCompiler
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 FileName = "cmd.exe",
-                Arguments = $"/c \"\"{Path.Combine(_path, "node_modules\\.bin\\iced.cmd")}\" {arguments} \"{info.FullName}\"\"",
+                Arguments = string.Format("/c \"\"{0}\" {1} \"{2}\"\"", Path.Combine(_path, "node_modules\\.bin\\iced.cmd"), arguments, info.FullName),
                 StandardErrorEncoding = Encoding.UTF8,
                 RedirectStandardError = true,
             };
@@ -122,7 +122,7 @@ namespace WebCompiler
 
         private string ConstructArguments(Config config)
         {
-            string arguments = $" --compile --output \"{_temp}\"";
+            string arguments = string.Format(" --compile --output \"{0}\"", _temp);
 
             var options = IcedCoffeeScriptOptions.FromConfig(config);
 

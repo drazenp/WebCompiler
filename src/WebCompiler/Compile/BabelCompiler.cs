@@ -86,7 +86,7 @@ namespace WebCompiler
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 FileName = "cmd.exe",
-                Arguments = $"/c \"\"{Path.Combine(_path, "node_modules\\.bin\\babel.cmd")}\" {arguments} \"{info.FullName}\"\"",
+                Arguments = string.Format("/c \"\"{0}\" {arguments} \"{info.FullName}\"\"", Path.Combine(_path, "node_modules\\.bin\\babel.cmd")),
                 StandardOutputEncoding = Encoding.UTF8,
                 StandardErrorEncoding = Encoding.UTF8,
                 RedirectStandardOutput = true,
@@ -109,7 +109,7 @@ namespace WebCompiler
         private static string ConstructArguments(Config config)
         {
             //string relative = FileHelpers.MakeRelative(config.GetAbsoluteOutputFile().FullName, config.GetAbsoluteInputFile().FullName);
-            string arguments = $"--presets react";
+            string arguments = "--presets react";
 
             var options = BabelOptions.FromConfig(config);
 

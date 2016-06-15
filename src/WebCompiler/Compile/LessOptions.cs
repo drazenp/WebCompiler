@@ -11,7 +11,17 @@ namespace WebCompiler
 
         /// <summary> Creates a new instance of the class.</summary>
         public LessOptions()
-        { }
+        {
+            AutoPrefix = "";
+            CssComb = "none";
+            StrictMath = true;
+            IECompat = true;
+            StrictUnits = false;
+            RelativeUrls = true;
+            RootPath = "";
+            SourceMapRoot = string.Empty;
+            SourceMapBasePath = string.Empty;
+        }
 
         /// <summary>
         /// Load the settings from the config object
@@ -70,39 +80,39 @@ namespace WebCompiler
         /// property support to apply prefixes for you.
         /// </summary>
         [JsonProperty("autoPrefix")]
-        public string AutoPrefix { get; set; } = "";
+        public string AutoPrefix { get; set; }
 
         /// <summary>
         /// CssComb will order the properties in the compiled CSS file.
         /// </summary>
         [JsonProperty("cssComb")]
-        public string CssComb { get; set; } = "none";
+        public string CssComb { get; set; }
 
         /// <summary>
         /// Currently only used for the data-uri function to ensure that images aren't
         /// created that are too large for the browser to handle.
         /// </summary>
         [JsonProperty("ieCompat")]
-        public bool IECompat { get; set; } = true;
+        public bool IECompat { get; set; }
 
         /// <summary>
         /// Without this option on Less will try and process all maths in your CSS.
         /// </summary>
         [JsonProperty("strictMath")]
-        public bool StrictMath { get; set; } = false;
+        public bool StrictMath { get; set; }
 
         /// <summary>
         /// Without this option, less attempts to guess at the output unit when it does maths.
         /// </summary>
         [JsonProperty("strictUnits")]
-        public bool StrictUnits { get; set; } = false;
+        public bool StrictUnits { get; set; }
 
         /// <summary>
         /// This option allows you to re-write URL's in imported files so that the URL is always
         /// relative to the base imported file.
         /// </summary>
         [JsonProperty("relativeUrls")]
-        public bool RelativeUrls { get; set; } = true;
+        public bool RelativeUrls { get; set; }
 
         /// <summary>
         /// Allows you to add a path to every generated import and url in your css.
@@ -110,18 +120,18 @@ namespace WebCompiler
         /// just ones that are left in the output css.
         /// </summary>
         [JsonProperty("rootPath")]
-        public string RootPath { get; set; } = "";
+        public string RootPath { get; set; }
 
         /// <summary>
         /// Base path, will be emitted in source-map as is
         /// </summary>
         [JsonProperty("sourceMapRoot")]
-        public string SourceMapRoot { get; set; } = string.Empty;
+        public string SourceMapRoot { get; set; }
 
         /// <summary>
         /// This is the opposite of the 'rootpath' option, it specifies a path which should be removed from the output paths.
         /// </summary>
         [JsonProperty("sourceMapBasePath")]
-        public string SourceMapBasePath { get; set; } = string.Empty;
+        public string SourceMapBasePath { get; set; }
     }
 }

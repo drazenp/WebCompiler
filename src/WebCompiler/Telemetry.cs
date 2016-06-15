@@ -14,7 +14,8 @@ namespace WebCompiler
         private const string TELEMETRY_KEY = "6e6f3a28-9a6b-4338-a03d-560756b25a40";
 
         /// <summary>Determines if telemetry should be reported.</summary>
-        public static bool Enabled { get; set; } = true;
+        private static bool _enabled = true;
+        public static bool Enabled { get { return _enabled; } set { _enabled = value; } }
 
         private static TelemetryClient GetAppInsightsClient()
         {

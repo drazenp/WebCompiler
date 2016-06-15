@@ -31,13 +31,13 @@ namespace WebCompiler
         /// Settings for the minification.
         /// </summary>
         [JsonProperty("minify")]
-        public Dictionary<string, object> Minify { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, object> Minify { get; set; }
 
         /// <summary>
         /// If true it makes Visual Studio include the output file in the project.
         /// </summary>
         [JsonProperty("includeInProject")]
-        public bool IncludeInProject { get; set; } = true;
+        public bool IncludeInProject { get; set; }
 
         /// <summary>
         /// If true a source map file is generated for the file types that support it.
@@ -49,9 +49,16 @@ namespace WebCompiler
         /// Options specific to each compiler. Based on the inputFile property.
         /// </summary>
         [JsonProperty("options")]
-        public Dictionary<string, object> Options { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, object> Options { get; set; }
 
         internal string Output { get; set; }
+
+        public Config()
+        {
+            Options  = new Dictionary<string, object>();
+            Minify  = new Dictionary<string, object>();
+            IncludeInProject = true;
+        }
 
         /// <summary>
         /// Converts the relative input file to an absolute file path.

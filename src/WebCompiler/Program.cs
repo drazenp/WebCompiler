@@ -40,16 +40,16 @@ namespace WebCompiler
         {
             // For console colors, see http://stackoverflow.com/questions/23975735/what-is-this-u001b9-syntax-of-choosing-what-color-text-appears-on-console
 
-            processor.BeforeProcess += (s, e) => { Console.WriteLine($"Processing \x1B[36m{e.Config.InputFile}"); if (e.ContainsChanges) FileHelpers.RemoveReadonlyFlagFromFile(e.Config.GetAbsoluteOutputFile()); };
-            processor.AfterProcess += (s, e) => { Console.WriteLine($"  \x1B[32mCompiled"); };
+            processor.BeforeProcess += (s, e) => { Console.WriteLine(string.Format("Processing \x1B[36m{0}", e.Config.InputFile)); if (e.ContainsChanges) FileHelpers.RemoveReadonlyFlagFromFile(e.Config.GetAbsoluteOutputFile()); };
+            processor.AfterProcess += (s, e) => { Console.WriteLine("  \x1B[32mCompiled"); };
             processor.BeforeWritingSourceMap += (s, e) => { if (e.ContainsChanges) FileHelpers.RemoveReadonlyFlagFromFile(e.ResultFile); };
-            processor.AfterWritingSourceMap += (s, e) => { Console.WriteLine($"  \x1B[32mSourcemap"); };
+            processor.AfterWritingSourceMap += (s, e) => { Console.WriteLine("  \x1B[32mSourcemap"); };
             processor.ConfigProcessed += (s, e) => { Console.WriteLine("\t"); };
 
             FileMinifier.BeforeWritingMinFile += (s, e) => { FileHelpers.RemoveReadonlyFlagFromFile(e.ResultFile); };
-            FileMinifier.AfterWritingMinFile += (s, e) => { Console.WriteLine($"  \x1B[32mMinified"); };
+            FileMinifier.AfterWritingMinFile += (s, e) => { Console.WriteLine("  \x1B[32mMinified"); };
             FileMinifier.BeforeWritingGzipFile += (s, e) => { FileHelpers.RemoveReadonlyFlagFromFile(e.ResultFile); };
-            FileMinifier.AfterWritingGzipFile += (s, e) => { Console.WriteLine($"  \x1B[32mGZipped"); };
+            FileMinifier.AfterWritingGzipFile += (s, e) => { Console.WriteLine("  \x1B[32mGZipped"); };
         }
 
         private static IEnumerable<Config> GetConfigs(string configPath, string file)

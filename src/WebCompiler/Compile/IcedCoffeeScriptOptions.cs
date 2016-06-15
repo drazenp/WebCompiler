@@ -9,7 +9,10 @@ namespace WebCompiler
     {
         /// <summary> Creates a new instance of the class.</summary>
         public IcedCoffeeScriptOptions()
-        { }
+        {
+            Bare = false;
+            RuntimeMode = "node";
+        }
 
         private const string trueStr = "true";
 
@@ -41,12 +44,12 @@ namespace WebCompiler
         /// Compile the JavaScript without the top-level function safety wrapper.
         /// </summary>
         [JsonProperty("bare")]
-        public bool Bare { get; set; } = false;
+        public bool Bare { get; set; }
 
         /// <summary>
         /// Specify how the Iced runtime is included in the output JavaScript file.
         /// </summary>
         [JsonProperty("runtimeMode")]
-        public string RuntimeMode { get; set; } = "node";
+        public string RuntimeMode { get; set; }
     }
 }

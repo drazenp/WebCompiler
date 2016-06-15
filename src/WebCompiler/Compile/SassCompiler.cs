@@ -88,7 +88,7 @@ namespace WebCompiler
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 FileName = "cmd.exe",
-                Arguments = $"/c \"\"{Path.Combine(_path, "node_modules\\.bin\\node-sass.cmd")}\" {arguments} \"{info.FullName}\"\"",
+                Arguments = string.Format("/c \"\"{0}\" {1} \"{2}\"\"", Path.Combine(_path, "node_modules\\.bin\\node-sass.cmd"), arguments, info.FullName),
                 StandardOutputEncoding = Encoding.UTF8,
                 StandardErrorEncoding = Encoding.UTF8,
                 RedirectStandardOutput = true,

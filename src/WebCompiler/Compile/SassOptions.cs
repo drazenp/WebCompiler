@@ -11,7 +11,15 @@ namespace WebCompiler
 
         /// <summary> Creates a new instance of the class.</summary>
         public SassOptions()
-        { }
+        { 
+        IncludePath = string.Empty;
+        IndentType = "space";
+        IndentWidth = 2;
+        OutputStyle = "nested";
+        Precision = 5;
+        RelativeUrls = true;
+        SourceMapRoot = string.Empty;
+        }
 
         /// <summary>
         /// Loads the settings based on the config
@@ -59,43 +67,43 @@ namespace WebCompiler
         /// Path to look for imported files
         /// </summary>
         [JsonProperty("includePath")]
-        public string IncludePath { get; set; } = string.Empty;
+        public string IncludePath { get; set; }
 
         /// <summary>
         /// Indent type for output CSS.
         /// </summary>
         [JsonProperty("indentType")]
-        public string IndentType { get; set; } = "space";
+        public string IndentType { get; set; }
 
         /// <summary>
         /// Number of spaces or tabs (maximum value: 10)
         /// </summary>
         [JsonProperty("indentWidth")]
-        public int IndentWidth { get; set; } = 2;
+        public int IndentWidth { get; set; }
 
         /// <summary>
         /// Type of output style
         /// </summary>
         [JsonProperty("outputStyle")]
-        public string OutputStyle { get; set; } = "nested";
+        public string OutputStyle { get; set; }
 
 
         /// <summary>
         /// Precision
         /// </summary>
-        public int Precision { get; set; } = 5;
+        public int Precision { get; set; }
 
         /// <summary>
         /// This option allows you to re-write URL's in imported files so that the URL is always
         /// relative to the base imported file.
         /// </summary>
         [JsonProperty("relativeUrls")]
-        public bool RelativeUrls { get; set; } = true;
+        public bool RelativeUrls { get; set; }
 
         /// <summary>
         /// Base path, will be emitted in source-map as is
         /// </summary>
         [JsonProperty("sourceMapRoot")]
-        public string SourceMapRoot { get; set; } = string.Empty;
+        public string SourceMapRoot { get; set; }
     }
 }

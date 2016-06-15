@@ -14,11 +14,17 @@ namespace WebCompiler
         /// <summary>
         /// Contains all files the current file is dependent ont
         /// </summary>
-        public HashSet<string> DependentOn { get; set; } = new HashSet<string>();
+        public HashSet<string> DependentOn { get; set; }
 
         /// <summary>
         /// Contains all files that are dependent on this file
         /// </summary>
-        public HashSet<string> DependentFiles { get; set; } = new HashSet<string>();
+        public HashSet<string> DependentFiles { get; set; }
+
+        public Dependencies()
+        {
+            DependentOn = new HashSet<string>();
+            DependentFiles = new HashSet<string>();
+        }
     }
 }

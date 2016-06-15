@@ -86,7 +86,7 @@ namespace WebCompiler
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true,
                 FileName = "cmd.exe",
-                Arguments = $"/c \"\"{Path.Combine(_path, "node_modules\\.bin\\lessc.cmd")}\" {arguments} \"{info.FullName}\"\"",
+                Arguments = string.Format("/c \"\"{0}\" {1} \"{2}\"\"", Path.Combine(_path, "node_modules\\.bin\\lessc.cmd"), arguments, info.FullName),
                 StandardOutputEncoding = Encoding.UTF8,
                 StandardErrorEncoding = Encoding.UTF8,
                 RedirectStandardOutput = true,
@@ -131,13 +131,13 @@ namespace WebCompiler
                 arguments += " --relative-urls";
 
             if (!string.IsNullOrEmpty(options.RootPath))
-                arguments += $" --rootpath=\"{options.RootPath}\"";
+                arguments += string.Format(" --rootpath=\"{0}\"", options.RootPath);
 
             if (!string.IsNullOrEmpty(options.AutoPrefix))
-                arguments += $" --autoprefix=\"{options.AutoPrefix}\"";
+                arguments += string.Format(" --autoprefix=\"{0}\"", options.AutoPrefix);
 
             if (!string.IsNullOrEmpty(options.CssComb) && !options.CssComb.Equals("none", StringComparison.OrdinalIgnoreCase))
-                arguments += $" --csscomb=\"{options.CssComb}\"";
+                arguments += string.Format(" --csscomb=\"{0}\"", options.CssComb);
 
             if (!string.IsNullOrEmpty(options.SourceMapRoot))
                 arguments += " --source-map-rootpath=" + options.SourceMapRoot;

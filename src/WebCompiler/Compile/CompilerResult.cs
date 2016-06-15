@@ -30,7 +30,7 @@ namespace WebCompiler
         /// <summary>
         /// A collection of any errors reported by the compiler.
         /// </summary>
-        public List<CompilerError> Errors { get; set; } = new List<CompilerError>();
+        public List<CompilerError> Errors { get; set; }
 
         /// <summary>
         /// Checks if the compilation resulted in errors.
@@ -38,6 +38,11 @@ namespace WebCompiler
         public bool HasErrors
         {
             get { return Errors.Count > 0; }
+        }
+
+        public CompilerResult()
+        {
+            Errors = new List<CompilerError>();
         }
     }
 }
